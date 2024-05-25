@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   get "home/about"=>"homes#about", as: 'about'
   devise_for :users
 
-  resources :books
+  resources :books do
+    resource :favorite, only: [:create, :destroy]
+    resources :book_comments, only: [:create, :destroy]
+  end
+  
+  
   resources :users, only: [:index,:show,:edit,:update]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -43,3 +48,9 @@ end
                 #                         PUT    /users(.:format)                                                                                  devise/registrations#update
                 #                         DELETE /users(.:format)                                                                                  devise/registrations#destroy
                 #                         POST   /users(.:format)                                                                                  devise/registrations#create
+                
+                # book_favorite DELETE /books/:book_id/favorite(.:format)                                                                favorites#destroy
+                #               POST   /books/:book_id/favorite(.:format)                                                                favorites#create
+                
+            # book_book_comment DELETE /books/:book_id/book_comment(.:format)                                                            book_comments#destroy
+                            #   POST   /books/:book_id/book_comment(.:format)                                                            book_comments#create
