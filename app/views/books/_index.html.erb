@@ -18,16 +18,16 @@
         <td><%= book.body %></td>
         <td>
             <% if book.favorited_by?(current_user) %>
-              <p id="on", class="good">
+              <!--<p id="on", class="good">-->
               <!--<p class="text-danger">-->
-                <%= link_to book_favorite_path(book), method: :delete do %>
+                <%= link_to book_favorite_path(book), method: :delete, style: "color: red;" do %>
                   ♥<%= book.favorites.count %> <!--いいね-->
                 <% end %>
               </p>
             <% else %>
-              <p id="off", class="good">
+              <!--<p id="off", class="good">-->
               <!--<p class="text-primary">-->
-                <%= link_to book_favorite_path(book), method: :post do %>
+                <%= link_to book_favorite_path(book), method: :post, style: "color: blue;" do %>
                   ♥<%= book.favorites.count %> <!--いいね-->
                 <% end %>
               </p>
