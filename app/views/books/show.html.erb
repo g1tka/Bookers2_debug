@@ -1,13 +1,13 @@
 <div class='container'>
   <div class='row'>
-    
+
     <div class='col-md-3'>
       <h2>User info</h2>
       <%= render 'users/info' , user: @book.user %>
       <h2 class="mt-3">New book</h2>
       <%= render 'form', book: @book_new %>
     </div>
-    
+
     <div class='col-md-8 offset-md-1'>
   		<h2>Book detail</h2>
   		<table class='table'>
@@ -19,50 +19,61 @@
           </td>
           <td><%= link_to @book.title, @book %></td>
           <td><%= @book.body %></td>
-          
+
           <td>
             <% if @book.favorited_by?(current_user) %>
               <p>
                 <%= link_to book_favorite_path(@book), method: :delete do %>
-                  ♥<%= @book.favorites.count %> いいね
+                  ♥<%= @book.favorites.count %> <!--いいね-->
                 <% end %>
               </p>
             <% else %>
               <p>
                 <%= link_to book_favorite_path(@book), method: :post do %>
-                  ♡<%= @book.favorites.count %> いいね
+                  ♡<%= @book.favorites.count %> <!--いいね-->
                 <% end %>
               </p>
             <% end %>
           </td>
-          
+
           <td>
             <p>コメント数：<%= @book.book_comments.count %></p>
           </td>
-          
-          
+
+
           <% if @book.user_id == current_user.id %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
           <% end %>
         </tr>
       </table>
-      
+
       <div>
-        <% @book.book_comments.each do |book_comment| %>
-          <%= image_tag book_comment.user.get_profile_image(100,100) %>
-          <br>
-          <%= link_to user_path(@book.user_id) do %>
-            <%= book_comment.user.name %><br>
+        <table>
+          <% @book.book_comments.each do |book_comment| %>
+            <tr>
+              <td>
+                <%= image_tag book_comment.user.get_profile_image(100,100) %><br>
+                <%= link_to user_path(book_comment.user_id) do %>
+                  <%= book_comment.user.name %><br>
+                <% end %>
+              </td>
+              <td><%= book_comment.comment %></td>
+              <td>
+                <% if book_comment.user == current_user %>
+                  <%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+                <% end %>
+              </td>
+            </tr> 
           <% end %>
-        <% end %>
+        </table>
+      
+      
+  <!--book_book_comment   DELETE    /books/:book_id/book_comment(.:format)           book_comments#destroy-->
         
-        <% if @book_comment.user == current_user %>
-          <%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment), method: :delete %>
-        <% end %>
 
       </div>
-      
+
       <div>
         <%= form_with model: [@book, @book_comment] do |f| %>
           <%= f.text_area :comment, rows: '5',cols: '80' %><br>
@@ -71,6 +82,6 @@
       </div>
 
     </div>
-    
+
   </div>
 </div>

@@ -6,8 +6,13 @@ class BookCommentsController < ApplicationController
       # comment = BookComment.new(book_comment_params)
       # comment.user_id = current_user.id この二つを↑一文で表せる。
       comment.book_id = book.id
-      comment.save
-      redirect_to book_path(book)
+
+      if comment.save
+        redirect_to book_path(book)
+      else
+        # エラーメッセージを出力
+        puts comment.errors.full_messages
+      end
     end
     
     def destroy
@@ -18,7 +23,7 @@ class BookCommentsController < ApplicationController
   private
 
   def book_comment_params
-    params.require(:book_comment).permit(:comment)
+    params.require(:book_comment).permit(:comment).merge(user_id: current_user.id, book_id: params[:book_id])
   end
   
 end
