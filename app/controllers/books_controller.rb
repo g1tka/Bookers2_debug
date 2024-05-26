@@ -12,9 +12,9 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
-    @book_new = Book.new
+    @book = Book.new
     @user = current_user
-    
+
     @book_comment = BookComment.new
   end
 
