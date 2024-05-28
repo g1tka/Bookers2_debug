@@ -14,6 +14,7 @@
         <td>フォロー数: <%= user.followings.count %></td>
         <td>フォロワー数: <%= user.followers.count %></td>
         <% unless user == current_user %>
+        <!--if文で if user != current_user も同じ意味-->
           <td>
             <% if current_user.following?(user) %>
               <%= link_to "フォロー解除", user_relationships_path(user.id), method: :delete %>
