@@ -12,4 +12,8 @@ class SearchesController < ApplicationController
     end
   end
   
+  respond_to do |format|
+    format.html # この行が必要です
+  end
+  
 end
