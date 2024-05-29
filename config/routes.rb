@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'relationships/followings'
   get 'relationships/followers'
+  
+  get "search" => "searches#search"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: "homes#top"
@@ -67,3 +69,5 @@ end
                     #                     POST   /users/:user_id/relationships(.:format)                                                           relationships#create
                     #     user_followings GET    /users/:user_id/followings(.:format)                                                              relationships#followings
                     #       user_followers GET    /users/:user_id/followers(.:format)                                                               relationships#followers
+                    
+                        # search GET    /search(.:format)                                                                                 searches#search
