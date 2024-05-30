@@ -1,16 +1,17 @@
 <% if @users.exists? %>
-  <% @users.each do |user| %>
-    <table class='table'> 
-      <thead>
-        <tr>
-          <th>image</th>
-          <th>name</th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
+  
+  <table class='table'> 
+    <thead>
+      <tr>
+        <th>image</th>
+        <th>name</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
         <tr>
           <td><%= image_tag user.get_profile_image(50,50) %></td>
           <td><%= user.name %></td>
@@ -18,9 +19,10 @@
           <td>フォロワー数: <%= user.followers.count %></td>
           <td><%= link_to 'Show', user %></td>
         </tr>
-      </tbody>
-    </table>
-  <% end %>
+      <% end %>
+    </tbody>
+  </table>
+ 
 <% else %>
   <p>ユーザーはいません</p>
 <% end %>

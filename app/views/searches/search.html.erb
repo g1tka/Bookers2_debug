@@ -1,6 +1,6 @@
 <!--<table class="table table-hover table-inverse">-->
   <% if @model == "User" %>
-    <h2>Users search for "<%= @word %>"</h2>
+    <h2>Users search for "<%= @content %>"</h2>
     <%= render 'users/index', users: @records %>
       <!--<thead>-->
       <!--  <tr>-->
@@ -17,7 +17,7 @@
       <!--    </tr>-->
       <!--</tbody>-->
   <% elsif @model == "book" %>
-    <h2>Books search for "<%= @word %>"</h2>
+    <h2>Books search for "<%= @content %>"</h2>
     <%= render 'books/index', books: @records %>
       <!--<thead>-->
       <!--  <tr>-->

@@ -12,6 +12,7 @@
       <tr>
         <td><%= link_to(book.user) do %>
           <%= image_tag book.user.get_profile_image(50,50) %>
+          <!--%= image_tag book.user.get_profile_image, size:'50x50' %>-->
           <% end %>
         </td>
         <td><%= link_to book.title,book %></td>
@@ -34,9 +35,9 @@
             <% end %>
           </td>
           <td>
-            <% if comment_display %>
+            <!--% if comment_display %>-->
               <p>コメント数：<%= book.book_comments.count %></p>
-            <% end %>
+            <!--% end %>-->
           </td>
 
       </tr>

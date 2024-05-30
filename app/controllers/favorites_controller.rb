@@ -12,6 +12,7 @@ class FavoritesController < ApplicationController
     # end
     
     redirect_back(fallback_location: books_path)
+    # redirect_to request.referer
     
     # if request.path == "/books"
     #   redirect_to books_path
@@ -31,6 +32,7 @@ class FavoritesController < ApplicationController
     favorite = current_user.favorites.find_by(book_id: book.id)
     favorite.destroy
     redirect_back(fallback_location: books_path)
+    # redirect_to request.referer
   end
   
 end

@@ -3,15 +3,15 @@ class SearchesController < ApplicationController
   
   def search
     @model = params[:model]
-    @word = params[:word]
+    @content = params[:content]
     @method = params[:method]
     
     if @model == "user"
-      @records = User.search_for(@word, @method)
+      @records = User.search_for(@content, @method)
       # @users = User.looks(params[:search], params[:word])
       # render "/searches/search"
     else
-      @records = Book.search_for(@word, @method)
+      @records = Book.search_for(@content, @method)
       # @books = Book.looks(params[:search], params[:word])
       # render "/searches/search"
     end
