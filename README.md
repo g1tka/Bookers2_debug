@@ -1,24 +1,16 @@
-# README
+DMM WBCAMP 学習課題　応用編　です。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+基礎編で作成したBookers2に様々な機能を加えていきます。
+自身で１から作成したBookers2は応用課題６で変更を加えます。
 
-Things you may want to cover:
+こちらは練習用のため、ある程度構造ができたものが配布されています。
 
-* Ruby version
+応用課題２：配布されたファイルのエラーをすべて修正する。（デバッグ練習）
 
-* System dependencies
+応用課題３：いいね機能を実装。コメント機能を実装。
 
-* Configuration
+応用課題４：フォロー/フォロワー機能を実装。
 
-* Database creation
+応用課題５：検索機能を実装。
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+※応用課題１はBookers1のdebugとして別ディレクトリに保存しています。
