@@ -22,11 +22,13 @@
           <td><%= @book.body %></td>
 
           <td id="favorite_btn_<%= @book.id %>" >
-              <%= render "favorites/favorite", book: @book %>
+            <%= render "favorites/favorite", book: @book %>
           </td>
 
-          <td>
-            <p>コメント数：<%= @book.book_comments.count %></p>
+<!--このコメント数も非同期通信化したい-->
+          <td id="comment_count">
+            <%= render "book_comments/count", book: @book %>
+            <!--<p>コメント数：%= @book.book_comments.count %></p>-->
           </td>
 
 
@@ -37,36 +39,17 @@
         </tr>
       </table>
 
-      <div>
-        <table>
-          <% @book.book_comments.each do |book_comment| %>
-            <tr>
-              <td>
-                <%= image_tag book_comment.user.get_profile_image(100,100) %><br>
-                <%= link_to user_path(book_comment.user_id) do %>
-                  <%= book_comment.user.name %><br>
-                <% end %>
-              </td>
-              <td><%= book_comment.comment %></td>
-              <td>
-                <% if book_comment.user == current_user %>
-                  <%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-        </table>
+<!--ここからコメント一覧-->
+      <div id="comment_index">
+        <%= render "book_comments/index", book: @book %>
       </div>
 
       <%= render 'layouts/errors', obj: @book_comment %>
 
 
-
-      <div>
-        <%= form_with model: [@book, BookComment.new] do |f| %>
-          <%= f.text_area :comment, rows: '5',cols: '80' %><br>
-          <%= f.submit "送信" %><br>
-        <% end %>
+<!--コメントのフォーム-->
+      <div id="comment_form">
+        <%= render "book_comments/form", book: @book, book_comment: @book_comment %>
       </div>
 
       
