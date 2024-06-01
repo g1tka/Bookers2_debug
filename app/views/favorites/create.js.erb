@@ -1,1 +1,11 @@
 $('#favorite_btn_<%= @book.id %>').html("<%= j(render "favorites/favorite", book: @book) %>");
+
+<!--$("#book_く%= @book.id %> .favorite-btn").html("く%= j(render 'favorites/favorite-btn', book: @book) %>");-->
+<!--インスタンス変数はfavoritesコントローラーで定義。-->
+
+<!--$()はセレクタ。idがbook_〇〇要素の中の、favorite-btnクラスの要素。-->
+<!--renderする場所のタグにidを付与する。-->
+
+<!--.html()は対象セレクタの子要素をかっこ内のものに変更するという意味-->
+<!--j()はescape_javascript()の省略形。js.erbファイルで部分テンプレートを呼び出す際に必要となる。-->
+<!--createアクションを通って@bookは最新の状態になり、それを用いていいねボタンを部分テンプレートで-->

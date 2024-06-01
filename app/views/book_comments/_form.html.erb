@@ -2,3 +2,8 @@
   <%= f.text_area :comment, rows: '5', class: 'w-100', id: "comment_textarea" %><br>
   <%= f.submit "送信" %><br>
 <% end %>
+
+<!--く%= f.text_area :comment, size:"90x5" %>-->
+<!--これでid=〇〇という記述は無いが、form_withを用いた際、input要素（入力エリア）には-->
+<!--自動的に、　　　モデル名＿カラム名　というidが付与される！！！-->
+<!--今回の場合、book_comment＿comment　　というidが付与されていた！-->
