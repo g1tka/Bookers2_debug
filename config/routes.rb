@@ -14,17 +14,19 @@ Rails.application.routes.draw do
     resources :book_comments, only: [:create, :destroy]
   end
   
-  
   resources :users, only: [:index,:show,:edit,:update] do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
   
-  
   get "/search" => "searches#search"
   # get '/search', to: 'searches#search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create, :show]
+  
 end
 
 
@@ -72,3 +74,7 @@ end
                     #       user_followers GET    /users/:user_id/followers(.:format)                                                               relationships#followers
                     
                         # search GET    /search(.:format)                                                                                 searches#search
+                        
+              # messages POST           /messages(.:format)                                                                               messages#create
+                    # rooms POST        /rooms(.:format)                                                                                  rooms#create
+                      # room GET        /rooms/:id(.:format)                                                                              rooms#show

@@ -6,6 +6,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book_new = Book.new
+    
+    # ここからユーザー同士のDMルーム機能について。
+    
+    
   end
 
   def index
