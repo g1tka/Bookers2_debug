@@ -75,6 +75,6 @@ end
                     
                         # search GET    /search(.:format)                                                                                 searches#search
                         
-              # messages POST           /messages(.:format)                                                                               messages#create
-                    # rooms POST        /rooms(.:format)                                                                                  rooms#create
-                      # room GET        /rooms/:id(.:format)                                                                              rooms#show
+              # messages POST           /messages(.:format)                 messages#create
+                    # rooms POST        /rooms(.:format)                    rooms#create
+                      # room GET        /rooms/:id(.:format)                rooms#show

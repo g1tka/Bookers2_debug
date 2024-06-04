@@ -8,8 +8,22 @@ class UsersController < ApplicationController
     @book_new = Book.new
     
     # ここからユーザー同士のDMルーム機能について。
-    
-    
+    @currentUserEntry = Entry.where(user_id: current_user.id)    #roomがcreateされたら現在のユーザーと
+    @userEntry = Entry.where(user_id: @user.id)                  #「チャットへボタンを押された」ユーザー両方をEntriesテーブルに記録する。
+    unless @user.id == current_user.id                  # ログインしているユーザーではないこと
+      @currentUserEntry.each do |cu|                    
+        @userEntry.each do |u|                          # 
+          if cu.room_id == u.room_id then               # true:すでにroomが作成されているならば、使いたい
+            @isRoom = true                              # Entireテーブル内にあるroom_idが共通のユーザーに対して
+            @roomID = cu.room_id                        # ←この変数を指定。
+          end
+        end
+      end
+      unless @isRoom                                    # false:あたらしくroom作成して、使いたい
+        @room = Room.new
+        @entry = Entry.new                                # Entryテーブルを作成、記録。
+      end
+    end
   end
 
   def index

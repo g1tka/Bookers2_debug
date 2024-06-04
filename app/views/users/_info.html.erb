@@ -28,13 +28,29 @@
 
 </table>
 
+<div class="row">
   <% unless user == current_user %>
     <% if current_user.following?(user) %>
       <%= link_to "フォロー解除", user_relationships_path(user.id), method: :delete, class: "btn btn-info" %>
+
+        <% if (current_user.following? @user) && (@user.following? current_user) %>
+          <% if @isRoom == true %>
+            <p class="user-show-room"><a href="<%= room_path(@roomId) %>">chatへ</a></p>
+          <% else %>
+            <%= form_for @room, method: :post do |f| %>
+              <%= fields_for @entry do |e| %>
+                <%= e.hidden_field :user_id, value: @user.id %>
+              <% end %>
+              <%= f.submit "chatを始める", class: "user-show-chat" %>
+            <% end %>
+          <% end %>
+        <% end %>
+
     <% else %>
       <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-success" %>
     <% end %>
   <% end %>
+</div>
 
 <div class='row'>
   <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
