@@ -12,8 +12,11 @@
         <div class="row">
           <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
         </div>
+        <div class="row mt-3">
+          <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, class: "btn btn-warning btn-sm btn-block sign_up", method: :post %>
+        </div>
       </div>
-    </div>
+    </div>　
   </div>
 </div>
 

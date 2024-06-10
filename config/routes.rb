@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get "home/about"=>"homes#about", as: 'about'
   devise_for :users
+  
+  post 'homes/guest_sign_in', to: 'homes#guest_sign_in'
 
   resources :books do
     resource :favorite, only: [:create, :destroy]
@@ -28,6 +30,8 @@ Rails.application.routes.draw do
   resources :rooms, only: [:create, :show]
   
 end
+
+
 
 
                               #     Prefix Verb   URI Pattern                                                                                       Controller#Action
@@ -78,3 +82,5 @@ end
               # messages POST           /messages(.:format)                 messages#create
                     # rooms POST        /rooms(.:format)                    rooms#create
                       # room GET        /rooms/:id(.:format)                rooms#show
+
+#  homes_guest_sign_in POST   /homes/guest_sign_in(.:format)                            homes#new_guest
