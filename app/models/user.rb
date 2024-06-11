@@ -69,4 +69,13 @@ class User < ApplicationRecord
     end
   end
   
+  #sessions_contoroller長いのでmethod化。クラスmethodなのでself.
+  def self.guest
+    user = User.find_or_create_by(email: 'guest@example.com') do |user|
+      # ゲストユーザー作製に必要な情報↓name,pw
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guest"
+    end
+  end
+  
 end
