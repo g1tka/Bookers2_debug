@@ -7,6 +7,12 @@ Rails.application.routes.draw do
     confirmations: "admins/confirmations"
   }
   
+#  get "/admin" => "admin/books#index"
+  
+#  namespace :admin do
+#    resources :books
+#  end
+  
   get 'relationships/followings'
   get 'relationships/followers'
   
@@ -97,3 +103,28 @@ end
                       # room GET        /rooms/:id(.:format)                rooms#show
 
 #  homes_guest_sign_in POST   /homes/guest_sign_in(.:format)                            homes#new_guest
+
+  #      new_admin_session GET    /admins/sign_in(.:format)                                                                         admins/sessions#new
+#            admin_session POST   /admins/sign_in(.:format)                                                                         admins/sessions#create
+#    destroy_admin_session DELETE /admins/sign_out(.:format)                                                                        admins/sessions#destroy
+ #      new_admin_password GET    /admins/password/new(.:format)                                                                    admins/passwords#new
+      #edit_admin_password GET    /admins/password/edit(.:format)                                                                   admins/passwords#edit
+      #     admin_password PATCH  /admins/password(.:format)                                                                        admins/passwords#update
+       #                   PUT    /admins/password(.:format)                                                                        admins/passwords#update
+       #                   POST   /admins/password(.:format)                                                                        admins/passwords#create
+#cancel_admin_registration GET    /admins/cancel(.:format)                                                                          admins/registrations#cancel
+#   new_admin_registration GET    /admins/sign_up(.:format)                                                                         admins/registrations#new
+#  edit_admin_registration GET    /admins/edit(.:format)                                                                            admins/registrations#edit
+#       admin_registration PATCH  /admins(.:format)                                                                                 admins/registrations#update
+#                          PUT    /admins(.:format)                                                                                 admins/registrations#update
+#                          DELETE /admins(.:format)                                                                                 admins/registrations#destroy
+#                          POST   /admins(.:format)                                                                                 admins/registrations#create
+#              admin_books GET    /admin/books(.:format)                                                                            admin/books#index
+#                          POST   /admin/books(.:format)                                                                            admin/books#create
+#           new_admin_book GET    /admin/books/new(.:format)                                                                        admin/books#new
+#          edit_admin_book GET    /admin/books/:id/edit(.:format)                                                                   admin/books#edit
+#               admin_book GET    /admin/books/:id(.:format)                                                                        admin/books#show
+#                          PATCH  /admin/books/:id(.:format)                                                                        admin/books#update
+#                          PUT    /admin/books/:id(.:format)                                                                        admin/books#update
+#                          DELETE /admin/books/:id(.:format)                                                                        admin/books#destroy
+
