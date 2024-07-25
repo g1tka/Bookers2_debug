@@ -19,8 +19,10 @@ class BooksController < ApplicationController
     @user = current_user
     @book_comment = BookComment.new
     
+    # 過去一週間で
     to = Time.current.at_end_of_day
     from = (to - 6.day).at_beginning_of_day
+    # いいねされた数が多い順
     @books = Book.includes(:favorites).sort_by {|x| x.favorites.where(created_at: from...to).size}.reverse
    
     # @books = Book.includes(:favorited_users).
