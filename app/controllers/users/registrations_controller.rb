@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+
   before_action :check_guest, only: :destroy
 
   def ensure_normal_user
@@ -9,4 +10,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 end
 
-<!--ゲストユーザーが削除できないようにした。用意していないが。-->
+# <!--ゲストユーザーが削除できないようにした。用意していないが。-->

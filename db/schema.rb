@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_12_034250) do
+ActiveRecord::Schema.define(version: 2024_07_25_061955) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -122,6 +122,15 @@ ActiveRecord::Schema.define(version: 2024_06_12_034250) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "view_counts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "book_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_view_counts_on_book_id"
+    t.index ["user_id"], name: "index_view_counts_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "entries", "rooms"
@@ -129,4 +138,6 @@ ActiveRecord::Schema.define(version: 2024_06_12_034250) do
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "rooms", "users"
+  add_foreign_key "view_counts", "books"
+  add_foreign_key "view_counts", "users"
 end
