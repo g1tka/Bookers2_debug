@@ -1,0 +1,17 @@
+<div class="row d-block bg-dark pt-1" style="height:600px;overflow: scroll;" >
+  <div>
+    <% messages.each do |message|%>
+      <% if message.send_user.id==current_user.id%>
+        <div class="mb-1 d-flex">
+          <%= image_tag message.send_user.get_profile_image(50,50),class:"rounded ml-1 mr-2"%>
+          <div class="rounded bg-success text-black text-break" style="max-width:50%"><%= message.chat %></div>
+        </div>
+      <% else %>
+        <div class="d-flex flex-row-reverse mb-1">
+          <div><%= image_tag message.send_user.get_profile_image(50,50),class:"rounded ml-2 mr-1"%></div>
+          <div class="rounded bg-secondary text-white text-break mw-100" style="max-width:50%;"><%= message.chat %></div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

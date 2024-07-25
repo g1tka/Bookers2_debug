@@ -45,8 +45,8 @@ Rails.application.routes.draw do
   # get '/search', to: 'searches#search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
-  resources :messages, only: [:create]
-  resources :rooms, only: [:create, :show]
+  get 'messages/:id' => 'messages#message', as: 'message'
+  post 'messages' => 'messages#create', as: 'messages'
   
 end
 

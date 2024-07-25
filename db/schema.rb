@@ -85,13 +85,11 @@ ActiveRecord::Schema.define(version: 2024_07_25_061955) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "room_id", null: false
-    t.text "message"
+    t.integer "send_user_id"
+    t.integer "receive_user_id"
+    t.text "chat"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["room_id"], name: "index_messages_on_room_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -135,8 +133,6 @@ ActiveRecord::Schema.define(version: 2024_07_25_061955) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "entries", "rooms"
   add_foreign_key "entries", "users"
-  add_foreign_key "messages", "rooms"
-  add_foreign_key "messages", "users"
   add_foreign_key "rooms", "users"
   add_foreign_key "view_counts", "books"
   add_foreign_key "view_counts", "users"

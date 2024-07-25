@@ -11,6 +11,14 @@ ja:
           restrict_dependent_destroy:
             has_one: "%{record}が存在しているので削除できません"
             has_many: "%{record}が存在しているので削除できません"
+  devise:
+    sessions:
+      user:
+        signed_in: 'ログインしました。'
+        signed_out: 'ログアウトしました。'
+    registrations:
+      user:
+        signed_up: 'サインイン'
   date:
     abbr_day_names:
     - 日
